@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Predict the matchday</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+  :root{
+    --bg: var(--tg-theme-bg-color, #0f0f0f);
+    --card: var(--tg-theme-secondary-bg-color, #1c1c1e);
+    --text: var(--tg-theme-text-color, #fff);
+    --hint: var(--tg-theme-hint-color, #8a8a8e);
+    --accent: var(--tg-theme-button-color, #2ea043);
+    --on-accent: var(--tg-theme-button-text-color, #fff);
+    --home:#2ea043; --draw:#c9a227; --away:#378add;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font-family:-apple-system,Segoe UI,Roboto,sans-serif;
+    padding:12px 16px calc(96px + env(safe-area-inset-bottom));}
+  h1{font-size:18px;font-weight:500;margin:4px 0 2px}
+  .sub{color:var(--hint);font-size:13px;margin:0 0 14px}
+  .bout{background:var(--card);border-radius:14px;padding:12px 14px;margin-bottom:12px}
+  .lg{color:var(--hint);font-size:11px;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
+  .match{font-size:15px;font-weight:500;margin-bottom:10px}
+  .match .vs{color:var(--hint);font-weight:400;font-size:13px;margin:0 6px}
+  .nodata{color:var(--draw);font-size:11px;margin-bottom:8px}
+  .row{display:grid;grid-template-columns:54px 1fr 44px;align-items:center;gap:10px;margin:7px 0}
+  .leg{font-size:13px}
+  .leg.h{color:var(--home)} .leg.d{color:var(--draw)} .leg.a{color:var(--away)}
+  .row input[type=range]{width:100%}
+  .row.h input{accent-color:var(--home)} .row.d input{accent-color:var(--draw)} .row.a input{accent-color:var(--away)}
+  .pct{text-align:right;font-variant-numeric:tabular-nums;font-size:14px}
+  .reset{background:none;border:none;color:var(--hint);font-size:12px;padding:6px 0 0;cursor:pointer}
+  #submit{position:fixed;left:16px;right:16px;bottom:calc(12px + env(safe-area-inset-bottom));
+    background:var(--accent);color:var(--on-accent);border:none;border-radius:12px;
+    padding:14px;font-size:16px;font-weight:500;cursor:pointer}
+  #submit:disabled{opacity:.45}
+</style>
+</head>
+<body>
+<h1 id="title">Predict the matchday</h1>
+<p class="sub" id="sub">Set Home / Draw / Away for each match — beat the AI</p>
+<div id="list"></div>
+<button id="submit">Submit prediction</button>
+
+<script>
+const tg = window.Telegram && window.Telegram.WebApp;
+
+// Local-preview fallback when opened outside Telegram / with no card.json hosted.
+const DEMO = {event:{name:"Matchday (demo)",date:"2026-08-15"},bouts:[
+  {fixture_id:"city_villa_1",position:1,category:"Premier League",predictable:"ok",
+   competitors:[{side:"home",name:"Man City",prob:0.70},{side:"draw",prob:0.20},{side:"away",name:"Aston Villa",prob:0.10}]},
+  {fixture_id:"arsenal_chelsea_2",position:2,category:"Premier League",predictable:"ok",
+   competitors:[{side:"home",name:"Arsenal",prob:0.50},{side:"draw",prob:0.27},{side:"away",name:"Chelsea",prob:0.23}]},
+]};
+
+const LEGS = ["h","d","a"];      // ordered 1X2: index 0=home, 1=draw, 2=away
+const state = {};                // fixture_id -> [h, d, a] raw slider values (0..100)
+
+function parseCard(raw){
+  const ev = raw.event || {};
+  const name = ev.name || raw.name || "Matchday";
+  const date = (ev.date || raw.date || raw.generated_for || "").slice(0,10);
+  const rows = (raw.bouts || raw.fixtures || []).map(b=>{
+    const by = {}; (b.competitors||[]).forEach(c=>{ by[c.side||c.outcome]=c; });
+    const home=by.home||{}, draw=by.draw||{}, away=by.away||{};
+    const t = [home.prob, draw.prob, away.prob];
+    const hasModel = t.every(x=>typeof x==="number");
+    return {
+      id: b.fixture_id,                                  // build_card writes it; never reconstruct
+      home: home.name||"Home", away: away.name||"Away",
+      league: b.category || ev.league || "",
+      order: b.position || b.order || 0,
+      nodata: (b.predictable === "NO DATA") || !hasModel,
+      triple: hasModel ? t : [1/3,1/3,1/3],              // default sliders = the model's read
+    };
+  }).filter(r=>r.id);                                    // a fixture with no id can't be scored
+  rows.sort((a,b)=>a.order-b.order);
+  return {name, date, rows};
+}
+
+function pcts(id){ const v=state[id], s=v[0]+v[1]+v[2]||1; return v.map(x=>Math.round(x/s*100)); }
+
+function paint(id, el){
+  const p = pcts(id);
+  el.querySelectorAll(".pct").forEach((n,i)=>{ n.textContent = p[i] + "%"; });
+}
+
+function render(card){
+  document.getElementById("title").textContent = card.name;
+  document.getElementById("sub").textContent =
+    card.date ? (card.name + " · " + card.date + " — beat the AI") : "Beat the AI";
+  const list = document.getElementById("list"); list.innerHTML="";
+  card.rows.forEach(r=>{
+    state[r.id] = r.triple.map(x=>Math.round(x*100));
+    const el = document.createElement("div"); el.className="bout";
+    el.innerHTML =
+      '<div class="lg">'+(r.league||"")+'</div>'+
+      '<div class="match">'+r.home+'<span class="vs">vs</span>'+r.away+'</div>'+
+      (r.nodata ? '<div class="nodata">NO DATA — model has no read; your call</div>' : '')+
+      LEGS.map((g,i)=>(
+        '<div class="row '+g+'">'+
+          '<span class="leg '+g+'">'+({h:"Home",d:"Draw",a:"Away"}[g])+'</span>'+
+          '<input type="range" min="0" max="100" step="1" data-i="'+i+'" value="'+state[r.id][i]+'">'+
+          '<span class="pct">0%</span>'+
+        '</div>'
+      )).join('')+
+      '<button class="reset">🤖 reset to model</button>';
+    const inputs = el.querySelectorAll("input");
+    inputs.forEach(inp=>inp.addEventListener("input",()=>{
+      state[r.id][+inp.dataset.i] = +inp.value; paint(r.id, el);
+    }));
+    el.querySelector(".reset").addEventListener("click",()=>{
+      state[r.id] = r.triple.map(x=>Math.round(x*100));
+      inputs.forEach(inp=>{ inp.value = state[r.id][+inp.dataset.i]; });
+      paint(r.id, el);
+    });
+    list.appendChild(el); paint(r.id, el);
+  });
+}
+
+document.getElementById("submit").addEventListener("click",()=>{
+  // normalize each triple to sum 1 (an RPS prereq; the bot re-validates anyway)
+  const payload = Object.keys(state).map(id=>{
+    const v=state[id], s=v[0]+v[1]+v[2]||1;
+    return {id, p:[v[0]/s, v[1]/s, v[2]/s]};
+  });
+  const json = JSON.stringify(payload);
+  if (tg && tg.sendData){
+    if (tg.disableClosingConfirmation) tg.disableClosingConfirmation();
+    tg.sendData(json);                                   // -> web_app_data on the bot
+  } else { alert("Preview outside Telegram. Payload:\n"+json); }
+});
+
+async function boot(){
+  if (tg){ tg.ready(); tg.expand();
+    if (tg.disableVerticalSwipes) tg.disableVerticalSwipes();
+    if (tg.enableClosingConfirmation) tg.enableClosingConfirmation();
+  }
+  let raw;
+  try { raw = await (await fetch("./card.json",{cache:"no-store"})).json(); }
+  catch(e){ raw = DEMO; }
+  render(parseCard(raw));
+}
+boot();
+</script>
+</body>
+</html>
