@@ -4,10 +4,100 @@
     "date": "2026-08-15",
     "header": "MATCHDAY"
   },
-  "n_bouts": 3,
+  "n_bouts": 4,
   "bouts": [
     {
       "position": 1,
+      "section": "main",
+      "predictable": "ok",
+      "predicted_winner": "United States",
+      "winner_confidence": 0.52,
+      "competitors": [
+        {
+          "name": "United States",
+          "side": "home",
+          "prob": 0.52,
+          "odds": 1.95,
+          "stats": {
+            "form": null
+          },
+          "is_predicted_winner": true
+        },
+        {
+          "name": "Paraguay",
+          "side": "away",
+          "prob": 0.22,
+          "odds": 3.9,
+          "stats": {
+            "form": null
+          },
+          "is_predicted_winner": false
+        },
+        {
+          "name": "Draw",
+          "side": "draw",
+          "outcome": "draw",
+          "prob": 0.26,
+          "odds": 3.4,
+          "is_predicted_winner": false
+        }
+      ],
+      "category": "FIFA World Cup",
+      "prop": {
+        "label": "Over/Under 2.5",
+        "pick": "Over 2.5",
+        "p": 0.57,
+        "confidence": 0.57
+      },
+      "fixture_id": "states_paraguay_1"
+    },
+    {
+      "position": 2,
+      "section": "main",
+      "predictable": "ok",
+      "predicted_winner": "Brazil",
+      "winner_confidence": 0.45,
+      "competitors": [
+        {
+          "name": "Brazil",
+          "side": "home",
+          "prob": 0.45,
+          "odds": 2.2,
+          "stats": {
+            "form": null
+          },
+          "is_predicted_winner": true
+        },
+        {
+          "name": "England",
+          "side": "away",
+          "prob": 0.27,
+          "odds": 3.3,
+          "stats": {
+            "form": null
+          },
+          "is_predicted_winner": false
+        },
+        {
+          "name": "Draw",
+          "side": "draw",
+          "outcome": "draw",
+          "prob": 0.28,
+          "odds": 3.3,
+          "is_predicted_winner": false
+        }
+      ],
+      "category": "FIFA World Cup",
+      "prop": {
+        "label": "Over/Under 2.5",
+        "pick": "Over 2.5",
+        "p": 0.6,
+        "confidence": 0.6
+      },
+      "fixture_id": "brazil_england_2"
+    },
+    {
+      "position": 3,
       "section": "main",
       "predictable": "ok",
       "predicted_winner": "Man City",
@@ -49,10 +139,10 @@
         "p": 0.62,
         "confidence": 0.62
       },
-      "fixture_id": "city_villa_1"
+      "fixture_id": "city_villa_3"
     },
     {
-      "position": 2,
+      "position": 4,
       "section": "main",
       "predictable": "ok",
       "predicted_winner": "Arsenal",
@@ -94,52 +184,7 @@
         "p": 0.55,
         "confidence": 0.55
       },
-      "fixture_id": "arsenal_chelsea_2"
-    },
-    {
-      "position": 3,
-      "section": "main",
-      "predictable": "ok",
-      "predicted_winner": "Real Madrid",
-      "winner_confidence": 0.63,
-      "competitors": [
-        {
-          "name": "Real Madrid",
-          "side": "home",
-          "prob": 0.63,
-          "odds": 1.65,
-          "stats": {
-            "form": null
-          },
-          "is_predicted_winner": true
-        },
-        {
-          "name": "Sevilla",
-          "side": "away",
-          "prob": 0.13,
-          "odds": 5.0,
-          "stats": {
-            "form": null
-          },
-          "is_predicted_winner": false
-        },
-        {
-          "name": "Draw",
-          "side": "draw",
-          "outcome": "draw",
-          "prob": 0.24,
-          "odds": 3.9,
-          "is_predicted_winner": false
-        }
-      ],
-      "category": "La Liga",
-      "prop": {
-        "label": "Over/Under 2.5",
-        "pick": "Over 2.5",
-        "p": 0.58,
-        "confidence": 0.58
-      },
-      "fixture_id": "madrid_sevilla_3"
+      "fixture_id": "arsenal_chelsea_4"
     }
   ],
   "generated_for": "2026-08-15",

@@ -23,8 +23,11 @@
   .sub{color:var(--hint);font-size:13px;margin:0 0 14px}
   .bout{background:var(--card);border-radius:14px;padding:12px 14px;margin-bottom:12px}
   .lg{color:var(--hint);font-size:11px;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
-  .match{font-size:15px;font-weight:500;margin-bottom:10px}
-  .match .vs{color:var(--hint);font-weight:400;font-size:13px;margin:0 6px}
+  .match{font-size:15px;margin-bottom:10px}
+  .match .t{font-weight:600}
+  .match .t.h{color:var(--home)} .match .t.a{color:var(--away)}
+  .match .vs{color:var(--hint);font-weight:400;font-size:13px;margin:0 7px}
+  .match .flag{font-weight:400}
   .nodata{color:var(--draw);font-size:11px;margin-bottom:8px}
   .row{display:grid;grid-template-columns:54px 1fr 44px;align-items:center;gap:10px;margin:7px 0}
   .leg{font-size:13px}
@@ -52,12 +55,47 @@ const tg = window.Telegram && window.Telegram.WebApp;
 const DEMO = {event:{name:"Matchday (demo)",date:"2026-08-15"},bouts:[
   {fixture_id:"city_villa_1",position:1,category:"Premier League",predictable:"ok",
    competitors:[{side:"home",name:"Man City",prob:0.70},{side:"draw",prob:0.20},{side:"away",name:"Aston Villa",prob:0.10}]},
-  {fixture_id:"arsenal_chelsea_2",position:2,category:"Premier League",predictable:"ok",
-   competitors:[{side:"home",name:"Arsenal",prob:0.50},{side:"draw",prob:0.27},{side:"away",name:"Chelsea",prob:0.23}]},
+  {fixture_id:"usa_paraguay_2",position:2,category:"FIFA World Cup",predictable:"ok",
+   competitors:[{side:"home",name:"United States",prob:0.55},{side:"draw",prob:0.27},{side:"away",name:"Paraguay",prob:0.18}]},
 ]};
 
 const LEGS = ["h","d","a"];      // ordered 1X2: index 0=home, 1=draw, 2=away
 const state = {};                // fixture_id -> [h, d, a] raw slider values (0..100)
+
+// National-team flags (World Cup). Value = ISO-3166 alpha-2 (built into a flag
+// emoji) or a literal emoji for the UK home nations. Clubs aren't in the map, so
+// flag() returns "" for them — club crests come later, not parsed here.
+const NATION = {
+  "united states":"US","usa":"US","canada":"CA","mexico":"MX","costa rica":"CR","panama":"PA",
+  "honduras":"HN","jamaica":"JM","curacao":"CW","haiti":"HT","guatemala":"GT","el salvador":"SV",
+  "argentina":"AR","brazil":"BR","uruguay":"UY","colombia":"CO","ecuador":"EC","paraguay":"PY",
+  "chile":"CL","peru":"PE","bolivia":"BO","venezuela":"VE",
+  "england":"\u{1F3F4}\u{E0067}\u{E0062}\u{E0065}\u{E006E}\u{E0067}\u{E007F}",
+  "scotland":"\u{1F3F4}\u{E0067}\u{E0062}\u{E0073}\u{E0063}\u{E0074}\u{E007F}",
+  "wales":"\u{1F3F4}\u{E0067}\u{E0062}\u{E0077}\u{E006C}\u{E0073}\u{E007F}",
+  "france":"FR","spain":"ES","germany":"DE","italy":"IT","netherlands":"NL","portugal":"PT",
+  "belgium":"BE","croatia":"HR","switzerland":"CH","denmark":"DK","austria":"AT","poland":"PL",
+  "serbia":"RS","norway":"NO","sweden":"SE","czechia":"CZ","czech republic":"CZ","turkey":"TR",
+  "turkiye":"TR","ukraine":"UA","hungary":"HU","greece":"GR","ireland":"IE","romania":"RO",
+  "slovenia":"SI","slovakia":"SK","russia":"RU","iceland":"IS","albania":"AL","north macedonia":"MK",
+  "morocco":"MA","senegal":"SN","nigeria":"NG","egypt":"EG","cameroon":"CM","ghana":"GH",
+  "ivory coast":"CI","cote divoire":"CI","tunisia":"TN","algeria":"DZ","mali":"ML",
+  "south africa":"ZA","dr congo":"CD","congo dr":"CD","cape verde":"CV","burkina faso":"BF",
+  "japan":"JP","south korea":"KR","korea republic":"KR","iran":"IR","ir iran":"IR",
+  "saudi arabia":"SA","australia":"AU","qatar":"QA","iraq":"IQ","uae":"AE",
+  "united arab emirates":"AE","uzbekistan":"UZ","jordan":"JO","china":"CN","new zealand":"NZ",
+};
+function _norm(s){
+  return (s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z ]/g,"").trim();
+}
+function flag(name){
+  const v = NATION[_norm(name)];
+  if(!v) return "";                                          // a club -> no flag (crests TODO)
+  const emoji = /^[A-Z]{2}$/.test(v)
+    ? v.replace(/./g,c=>String.fromCodePoint(127397+c.charCodeAt(0)))   // ISO2 -> regional indicators
+    : v;                                                      // literal (UK home nations)
+  return '<span class="flag">'+emoji+'</span> ';
+}
 
 function parseCard(raw){
   const ev = raw.event || {};
@@ -98,7 +136,11 @@ function render(card){
     const el = document.createElement("div"); el.className="bout";
     el.innerHTML =
       '<div class="lg">'+(r.league||"")+'</div>'+
-      '<div class="match">'+r.home+'<span class="vs">vs</span>'+r.away+'</div>'+
+      '<div class="match">'+
+        '<span class="t h">'+flag(r.home)+r.home+'</span>'+
+        '<span class="vs">vs</span>'+
+        '<span class="t a">'+flag(r.away)+r.away+'</span>'+
+      '</div>'+
       (r.nodata ? '<div class="nodata">NO DATA — model has no read; your call</div>' : '')+
       LEGS.map((g,i)=>(
         '<div class="row '+g+'">'+
