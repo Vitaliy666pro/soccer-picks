@@ -29,8 +29,9 @@
   .match .vs{color:var(--hint);font-weight:400;font-size:13px;margin:0 7px}
   .match .flag{font-weight:400}
   .nodata{color:var(--draw);font-size:11px;margin-bottom:8px}
-  .row{display:grid;grid-template-columns:54px 1fr 44px;align-items:center;gap:10px;margin:7px 0}
+  .row{display:grid;grid-template-columns:84px 1fr 44px;align-items:center;gap:10px;margin:7px 0}
   .leg{font-size:13px}
+  .leg small{color:var(--hint);font-weight:400;font-size:11px}
   .leg.h{color:var(--home)} .leg.d{color:var(--draw)} .leg.a{color:var(--away)}
   .row input[type=range]{width:100%}
   .row.h input{accent-color:var(--home)} .row.d input{accent-color:var(--draw)} .row.a input{accent-color:var(--away)}
@@ -96,6 +97,11 @@ function flag(name){
     : v;                                                      // literal (UK home nations)
   return '<span class="flag">'+emoji+'</span> ';
 }
+function flagFor(name, stored){                              // card's stored flag wins, else JS map
+  if(stored) return '<span class="flag">'+stored+'</span> ';
+  return flag(name);
+}
+function odds(x){ return (typeof x==="number") ? x.toFixed(2) : ""; }
 
 function parseCard(raw){
   const ev = raw.event || {};
@@ -109,6 +115,8 @@ function parseCard(raw){
     return {
       id: b.fixture_id,                                  // build_card writes it; never reconstruct
       home: home.name||"Home", away: away.name||"Away",
+      homeFlag: (home.stats||{}).flag || "", awayFlag: (away.stats||{}).flag || "",
+      odds: [home.odds, draw.odds, away.odds],           // 1X2 book prices (may be null)
       league: b.category || ev.league || "",
       order: b.position || b.order || 0,
       nodata: (b.predictable === "NO DATA") || !hasModel,
@@ -137,18 +145,20 @@ function render(card){
     el.innerHTML =
       '<div class="lg">'+(r.league||"")+'</div>'+
       '<div class="match">'+
-        '<span class="t h">'+flag(r.home)+r.home+'</span>'+
+        '<span class="t h">'+flagFor(r.home,r.homeFlag)+r.home+'</span>'+
         '<span class="vs">vs</span>'+
-        '<span class="t a">'+flag(r.away)+r.away+'</span>'+
+        '<span class="t a">'+flagFor(r.away,r.awayFlag)+r.away+'</span>'+
       '</div>'+
       (r.nodata ? '<div class="nodata">NO DATA — model has no read; your call</div>' : '')+
-      LEGS.map((g,i)=>(
-        '<div class="row '+g+'">'+
-          '<span class="leg '+g+'">'+({h:"Home",d:"Draw",a:"Away"}[g])+'</span>'+
+      LEGS.map((g,i)=>{
+        const od = odds(r.odds[i]);
+        return '<div class="row '+g+'">'+
+          '<span class="leg '+g+'">'+({h:"Home",d:"Draw",a:"Away"}[g])+
+            (od?'<small> '+od+'</small>':'')+'</span>'+
           '<input type="range" min="0" max="100" step="1" data-i="'+i+'" value="'+state[r.id][i]+'">'+
           '<span class="pct">0%</span>'+
-        '</div>'
-      )).join('')+
+        '</div>';
+      }).join('')+
       '<button class="reset">🤖 reset to model</button>';
     const inputs = el.querySelectorAll("input");
     inputs.forEach(inp=>inp.addEventListener("input",()=>{

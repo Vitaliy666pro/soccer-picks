@@ -1,8 +1,8 @@
 {
   "event": {
-    "name": "Matchday — sample",
-    "date": "2026-08-15",
-    "header": "MATCHDAY"
+    "name": "World Cup — 2026-06-20",
+    "date": "2026-06-20",
+    "header": "WORLD CUP"
   },
   "n_bouts": 4,
   "bouts": [
@@ -10,26 +10,26 @@
       "position": 1,
       "section": "main",
       "predictable": "ok",
-      "predicted_winner": "United States",
-      "winner_confidence": 0.52,
+      "predicted_winner": "Ecuador",
+      "winner_confidence": 0.7635018911475719,
       "competitors": [
         {
-          "name": "United States",
+          "name": "Ecuador",
           "side": "home",
-          "prob": 0.52,
-          "odds": 1.95,
+          "prob": 0.7635018911475719,
+          "odds": 1.12,
           "stats": {
-            "form": null
+            "flag": "🇪🇨"
           },
           "is_predicted_winner": true
         },
         {
-          "name": "Paraguay",
+          "name": "Curaçao",
           "side": "away",
-          "prob": 0.22,
-          "odds": 3.9,
+          "prob": 0.06018824119820601,
+          "odds": 23.0,
           "stats": {
-            "form": null
+            "flag": "🇨🇼"
           },
           "is_predicted_winner": false
         },
@@ -37,8 +37,8 @@
           "name": "Draw",
           "side": "draw",
           "outcome": "draw",
-          "prob": 0.26,
-          "odds": 3.4,
+          "prob": 0.1763098676542219,
+          "odds": 9.5,
           "is_predicted_winner": false
         }
       ],
@@ -46,35 +46,82 @@
       "prop": {
         "label": "Over/Under 2.5",
         "pick": "Over 2.5",
-        "p": 0.57,
-        "confidence": 0.57
+        "p": 0.5935800263977757,
+        "confidence": 0.5935800263977757
       },
-      "fixture_id": "states_paraguay_1"
+      "venue": "neutral",
+      "fixture_id": "ecuador_curaçao_1"
     },
     {
       "position": 2,
       "section": "main",
       "predictable": "ok",
-      "predicted_winner": "Brazil",
-      "winner_confidence": 0.45,
+      "predicted_winner": "Japan",
+      "winner_confidence": 0.6286896694500497,
       "competitors": [
         {
-          "name": "Brazil",
+          "name": "Tunisia",
           "side": "home",
-          "prob": 0.45,
-          "odds": 2.2,
+          "prob": 0.13151216619871725,
+          "odds": 6.3,
           "stats": {
-            "form": null
+            "flag": "🇹🇳"
+          },
+          "is_predicted_winner": false
+        },
+        {
+          "name": "Japan",
+          "side": "away",
+          "prob": 0.6286896694500497,
+          "odds": 1.58,
+          "stats": {
+            "flag": "🇯🇵"
           },
           "is_predicted_winner": true
         },
         {
-          "name": "England",
-          "side": "away",
-          "prob": 0.27,
-          "odds": 3.3,
+          "name": "Draw",
+          "side": "draw",
+          "outcome": "draw",
+          "prob": 0.23979816435123313,
+          "odds": 4.0,
+          "is_predicted_winner": false
+        }
+      ],
+      "category": "FIFA World Cup",
+      "prop": {
+        "label": "Over/Under 2.5",
+        "pick": "Under 2.5",
+        "p": 0.4529852510805001,
+        "confidence": 0.5470147489194999
+      },
+      "venue": "neutral",
+      "fixture_id": "tunisia_japan_2"
+    },
+    {
+      "position": 3,
+      "section": "main",
+      "predictable": "ok",
+      "predicted_winner": "Netherlands",
+      "winner_confidence": 0.6002650754891535,
+      "competitors": [
+        {
+          "name": "Netherlands",
+          "side": "home",
+          "prob": 0.6002650754891535,
+          "odds": 1.7149999999999999,
           "stats": {
-            "form": null
+            "flag": "🇳🇱"
+          },
+          "is_predicted_winner": true
+        },
+        {
+          "name": "Sweden",
+          "side": "away",
+          "prob": 0.14721130964817553,
+          "odds": 4.76,
+          "stats": {
+            "flag": "🇸🇪"
           },
           "is_predicted_winner": false
         },
@@ -82,8 +129,8 @@
           "name": "Draw",
           "side": "draw",
           "outcome": "draw",
-          "prob": 0.28,
-          "odds": 3.3,
+          "prob": 0.252523614862671,
+          "odds": 4.1,
           "is_predicted_winner": false
         }
       ],
@@ -91,80 +138,36 @@
       "prop": {
         "label": "Over/Under 2.5",
         "pick": "Over 2.5",
-        "p": 0.6,
-        "confidence": 0.6
+        "p": 0.5174923504760103,
+        "confidence": 0.5174923504760103
       },
-      "fixture_id": "brazil_england_2"
-    },
-    {
-      "position": 3,
-      "section": "main",
-      "predictable": "ok",
-      "predicted_winner": "Man City",
-      "winner_confidence": 0.7,
-      "competitors": [
-        {
-          "name": "Man City",
-          "side": "home",
-          "prob": 0.7,
-          "odds": 1.5,
-          "stats": {
-            "form": null
-          },
-          "is_predicted_winner": true
-        },
-        {
-          "name": "Aston Villa",
-          "side": "away",
-          "prob": 0.1,
-          "odds": 6.0,
-          "stats": {
-            "form": null
-          },
-          "is_predicted_winner": false
-        },
-        {
-          "name": "Draw",
-          "side": "draw",
-          "outcome": "draw",
-          "prob": 0.2,
-          "odds": 4.2,
-          "is_predicted_winner": false
-        }
-      ],
-      "category": "Premier League",
-      "prop": {
-        "label": "Over/Under 2.5",
-        "pick": "Over 2.5",
-        "p": 0.62,
-        "confidence": 0.62
-      },
-      "fixture_id": "city_villa_3"
+      "venue": "neutral",
+      "fixture_id": "netherlands_sweden_3"
     },
     {
       "position": 4,
       "section": "main",
       "predictable": "ok",
-      "predicted_winner": "Arsenal",
-      "winner_confidence": 0.5,
+      "predicted_winner": "Germany",
+      "winner_confidence": 0.4598474064270358,
       "competitors": [
         {
-          "name": "Arsenal",
+          "name": "Germany",
           "side": "home",
-          "prob": 0.5,
-          "odds": 2.0,
+          "prob": 0.4598474064270358,
+          "odds": 1.53,
           "stats": {
-            "form": null
+            "flag": "🇩🇪"
           },
           "is_predicted_winner": true
         },
         {
-          "name": "Chelsea",
+          "name": "Ivory Coast",
           "side": "away",
-          "prob": 0.23,
-          "odds": 3.6,
+          "prob": 0.22621023451504518,
+          "odds": 5.86,
           "stats": {
-            "form": null
+            "flag": "🇨🇮"
           },
           "is_predicted_winner": false
         },
@@ -172,21 +175,23 @@
           "name": "Draw",
           "side": "draw",
           "outcome": "draw",
-          "prob": 0.27,
-          "odds": 3.3,
+          "prob": 0.3139423590579189,
+          "odds": 4.7,
           "is_predicted_winner": false
         }
       ],
-      "category": "Premier League",
+      "category": "FIFA World Cup",
       "prop": {
         "label": "Over/Under 2.5",
-        "pick": "Over 2.5",
-        "p": 0.55,
-        "confidence": 0.55
+        "pick": "Under 2.5",
+        "p": 0.396655033004706,
+        "confidence": 0.6033449669952939
       },
-      "fixture_id": "arsenal_chelsea_4"
+      "venue": "neutral",
+      "fixture_id": "germany_coast_4"
     }
   ],
-  "generated_for": "2026-08-15",
-  "sport": "soccer"
+  "generated_for": "2026-06-20",
+  "sport": "soccer",
+  "competition": "FIFA World Cup"
 }
