@@ -1,7 +1,7 @@
 {
   "event": {
-    "name": "World Cup — 2026-06-20",
-    "date": "2026-06-20",
+    "name": "World Cup — 2026-06-21",
+    "date": "2026-06-21",
     "header": "WORLD CUP"
   },
   "n_bouts": 4,
@@ -10,26 +10,26 @@
       "position": 1,
       "section": "main",
       "predictable": "ok",
-      "predicted_winner": "Ecuador",
-      "winner_confidence": 0.7635018911475719,
+      "predicted_winner": "Spain",
+      "winner_confidence": 0.7771224618492555,
       "competitors": [
         {
-          "name": "Ecuador",
+          "name": "Spain",
           "side": "home",
-          "prob": 0.7635018911475719,
-          "odds": 1.12,
+          "prob": 0.7771224618492555,
+          "odds": 1.1,
           "stats": {
-            "flag": "🇪🇨"
+            "flag": "🇪🇸"
           },
           "is_predicted_winner": true
         },
         {
-          "name": "Curaçao",
+          "name": "Saudi Arabia",
           "side": "away",
-          "prob": 0.06018824119820601,
-          "odds": 23.0,
+          "prob": 0.05432325786378007,
+          "odds": 24.89,
           "stats": {
-            "flag": "🇨🇼"
+            "flag": "🇸🇦"
           },
           "is_predicted_winner": false
         },
@@ -37,8 +37,8 @@
           "name": "Draw",
           "side": "draw",
           "outcome": "draw",
-          "prob": 0.1763098676542219,
-          "odds": 9.5,
+          "prob": 0.1685542802869646,
+          "odds": 10.5,
           "is_predicted_winner": false
         }
       ],
@@ -46,94 +46,94 @@
       "prop": {
         "label": "Over/Under 2.5",
         "pick": "Over 2.5",
-        "p": 0.5935800263977757,
-        "confidence": 0.5935800263977757
+        "p": 0.5805756037376472,
+        "confidence": 0.5805756037376472
       },
       "venue": "neutral",
-      "fixture_id": "ecuador_curaçao_1",
-      "kickoff_ts": 1782000000.0,
-      "kickoff": "Sun 00:00Z"
+      "fixture_id": "spain_arabia_1",
+      "kickoff_ts": 1782057600.0,
+      "kickoff": "Sun 16:00Z"
     },
     {
       "position": 2,
       "section": "main",
       "predictable": "ok",
-      "predicted_winner": "Japan",
-      "winner_confidence": 0.6286896694500497,
+      "predicted_winner": "Uruguay",
+      "winner_confidence": 0.6444841964762418,
       "competitors": [
         {
-          "name": "Tunisia",
+          "name": "Uruguay",
           "side": "home",
-          "prob": 0.13151216619871725,
-          "odds": 6.3,
+          "prob": 0.6444841964762418,
+          "odds": 1.47,
           "stats": {
-            "flag": "🇹🇳"
-          },
-          "is_predicted_winner": false
-        },
-        {
-          "name": "Japan",
-          "side": "away",
-          "prob": 0.6286896694500497,
-          "odds": 1.58,
-          "stats": {
-            "flag": "🇯🇵"
+            "flag": "🇺🇾"
           },
           "is_predicted_winner": true
+        },
+        {
+          "name": "Cape Verde",
+          "side": "away",
+          "prob": 0.10643498042814431,
+          "odds": 8.45,
+          "stats": {
+            "flag": "🇨🇻"
+          },
+          "is_predicted_winner": false
         },
         {
           "name": "Draw",
           "side": "draw",
           "outcome": "draw",
-          "prob": 0.23979816435123313,
-          "odds": 4.0,
+          "prob": 0.249080823095614,
+          "odds": 4.25,
           "is_predicted_winner": false
         }
       ],
       "category": "FIFA World Cup",
       "prop": {
         "label": "Over/Under 2.5",
-        "pick": "Under 2.5",
-        "p": 0.4529852510805001,
-        "confidence": 0.5470147489194999
+        "pick": "Over 2.5",
+        "p": 0.5308510569979124,
+        "confidence": 0.5308510569979124
       },
       "venue": "neutral",
-      "fixture_id": "tunisia_japan_2",
-      "kickoff_ts": 1782014400.0,
-      "kickoff": "Sun 04:00Z"
+      "fixture_id": "uruguay_verde_2",
+      "kickoff_ts": 1782079200.0,
+      "kickoff": "Sun 22:00Z"
     },
     {
       "position": 3,
       "section": "main",
       "predictable": "ok",
-      "predicted_winner": "Netherlands",
-      "winner_confidence": 0.6002650754891535,
+      "predicted_winner": "Egypt",
+      "winner_confidence": 0.4911017050694165,
       "competitors": [
         {
-          "name": "Netherlands",
+          "name": "New Zealand",
           "side": "home",
-          "prob": 0.6002650754891535,
-          "odds": 1.7149999999999999,
+          "prob": 0.21970695886315558,
+          "odds": 6.0,
           "stats": {
-            "flag": "🇳🇱"
-          },
-          "is_predicted_winner": true
-        },
-        {
-          "name": "Sweden",
-          "side": "away",
-          "prob": 0.14721130964817553,
-          "odds": 4.76,
-          "stats": {
-            "flag": "🇸🇪"
+            "flag": "🇳🇿"
           },
           "is_predicted_winner": false
+        },
+        {
+          "name": "Egypt",
+          "side": "away",
+          "prob": 0.4911017050694165,
+          "odds": 1.6,
+          "stats": {
+            "flag": "🇪🇬"
+          },
+          "is_predicted_winner": true
         },
         {
           "name": "Draw",
           "side": "draw",
           "outcome": "draw",
-          "prob": 0.252523614862671,
+          "prob": 0.289191336067428,
           "odds": 4.1,
           "is_predicted_winner": false
         }
@@ -141,39 +141,39 @@
       "category": "FIFA World Cup",
       "prop": {
         "label": "Over/Under 2.5",
-        "pick": "Over 2.5",
-        "p": 0.5174923504760103,
-        "confidence": 0.5174923504760103
+        "pick": "Under 2.5",
+        "p": 0.44753648493911974,
+        "confidence": 0.5524635150608803
       },
       "venue": "neutral",
-      "fixture_id": "netherlands_sweden_3",
-      "kickoff_ts": 1781974800.0,
-      "kickoff": "Sat 17:00Z"
+      "fixture_id": "zealand_egypt_3",
+      "kickoff_ts": 1782090000.0,
+      "kickoff": "Mon 01:00Z"
     },
     {
       "position": 4,
       "section": "main",
       "predictable": "ok",
-      "predicted_winner": "Germany",
-      "winner_confidence": 0.4598474064270358,
+      "predicted_winner": "Belgium",
+      "winner_confidence": 0.3766944021661572,
       "competitors": [
         {
-          "name": "Germany",
+          "name": "Belgium",
           "side": "home",
-          "prob": 0.4598474064270358,
-          "odds": 1.53,
+          "prob": 0.3766944021661572,
+          "odds": 1.44,
           "stats": {
-            "flag": "🇩🇪"
+            "flag": "🇧🇪"
           },
           "is_predicted_winner": true
         },
         {
-          "name": "Ivory Coast",
+          "name": "Iran",
           "side": "away",
-          "prob": 0.22621023451504518,
-          "odds": 5.86,
+          "prob": 0.3045959498761438,
+          "odds": 7.75,
           "stats": {
-            "flag": "🇨🇮"
+            "flag": "🇮🇷"
           },
           "is_predicted_winner": false
         },
@@ -181,8 +181,8 @@
           "name": "Draw",
           "side": "draw",
           "outcome": "draw",
-          "prob": 0.3139423590579189,
-          "odds": 4.7,
+          "prob": 0.3187096479576989,
+          "odds": 4.75,
           "is_predicted_winner": false
         }
       ],
@@ -190,16 +190,16 @@
       "prop": {
         "label": "Over/Under 2.5",
         "pick": "Under 2.5",
-        "p": 0.396655033004706,
-        "confidence": 0.6033449669952939
+        "p": 0.47767373311330735,
+        "confidence": 0.5223262668866926
       },
       "venue": "neutral",
-      "fixture_id": "germany_coast_4",
-      "kickoff_ts": 1781985600.0,
-      "kickoff": "Sat 20:00Z"
+      "fixture_id": "belgium_iran_4",
+      "kickoff_ts": 1782068400.0,
+      "kickoff": "Sun 19:00Z"
     }
   ],
-  "generated_for": "2026-06-20",
+  "generated_for": "2026-06-21",
   "sport": "soccer",
   "competition": "FIFA World Cup"
 }
