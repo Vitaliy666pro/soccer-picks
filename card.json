@@ -1,7 +1,7 @@
 {
   "event": {
-    "name": "World Cup — 2026-06-22",
-    "date": "2026-06-22",
+    "name": "World Cup — 2026-06-24",
+    "date": "2026-06-24",
     "header": "WORLD CUP"
   },
   "n_bouts": 4,
@@ -10,26 +10,26 @@
       "position": 1,
       "section": "main",
       "predictable": "ok",
-      "predicted_winner": "France",
-      "winner_confidence": 0.7546458595385842,
+      "predicted_winner": "Morocco",
+      "winner_confidence": 0.6950086943211182,
       "competitors": [
         {
-          "name": "France",
+          "name": "Morocco",
           "side": "home",
-          "prob": 0.7546458595385842,
-          "odds": 1.07,
+          "prob": 0.6950086943211182,
+          "odds": 1.19,
           "stats": {
-            "flag": "🇫🇷"
+            "flag": "🇲🇦"
           },
           "is_predicted_winner": true
         },
         {
-          "name": "Iraq",
+          "name": "Haiti",
           "side": "away",
-          "prob": 0.0670509729271157,
-          "odds": 32.0,
+          "prob": 0.08653631475658916,
+          "odds": 17.0,
           "stats": {
-            "flag": "🇮🇶"
+            "flag": "🇭🇹"
           },
           "is_predicted_winner": false
         },
@@ -37,8 +37,8 @@
           "name": "Draw",
           "side": "draw",
           "outcome": "draw",
-          "prob": 0.1783031675343,
-          "odds": 12.75,
+          "prob": 0.21845499092229262,
+          "odds": 7.38,
           "is_predicted_winner": false
         }
       ],
@@ -46,86 +46,38 @@
       "prop": {
         "label": "Over/Under 2.5",
         "pick": "Over 2.5",
-        "p": 0.5430529952223734,
-        "confidence": 0.5430529952223734
+        "p": 0.5557530979737527,
+        "confidence": 0.5557530979737527
       },
       "venue": "neutral",
-      "fixture_id": "france_iraq_1",
-      "kickoff_ts": 1782162000.0,
-      "kickoff": "Mon 21:00Z"
+      "fixture_id": "morocco_haiti_1",
+      "kickoff_ts": 1782338400.0,
+      "kickoff": "Wed 22:00Z"
     },
     {
       "position": 2,
       "section": "main",
       "predictable": "ok",
-      "predicted_winner": "Argentina",
-      "winner_confidence": 0.6258141313361719,
+      "predicted_winner": "Brazil",
+      "winner_confidence": 0.6812724149525381,
       "competitors": [
         {
-          "name": "Argentina",
+          "name": "Scotland",
           "side": "home",
-          "prob": 0.6258141313361719,
-          "odds": 1.5,
+          "prob": 0.10488442191027508,
+          "odds": 9.5,
           "stats": {
-            "flag": "🇦🇷"
+            "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿"
           },
-          "is_predicted_winner": true
+          "is_predicted_winner": false
         },
         {
-          "name": "Austria",
+          "name": "Brazil",
           "side": "away",
-          "prob": 0.1196636363612799,
-          "odds": 7.25,
+          "prob": 0.6812724149525381,
+          "odds": 1.33,
           "stats": {
-            "flag": "🇦🇹"
-          },
-          "is_predicted_winner": false
-        },
-        {
-          "name": "Draw",
-          "side": "draw",
-          "outcome": "draw",
-          "prob": 0.2545222323025481,
-          "odds": 4.25,
-          "is_predicted_winner": false
-        }
-      ],
-      "category": "FIFA World Cup",
-      "prop": {
-        "label": "Over/Under 2.5",
-        "pick": "Over 2.5",
-        "p": 0.5327760301449412,
-        "confidence": 0.5327760301449412
-      },
-      "venue": "neutral",
-      "fixture_id": "argentina_austria_2",
-      "kickoff_ts": 1782147600.0,
-      "kickoff": "Mon 17:00Z"
-    },
-    {
-      "position": 3,
-      "section": "main",
-      "predictable": "ok",
-      "predicted_winner": "Algeria",
-      "winner_confidence": 0.538542343864599,
-      "competitors": [
-        {
-          "name": "Jordan",
-          "side": "home",
-          "prob": 0.17712590008550494,
-          "odds": 6.1,
-          "stats": {
-            "flag": "🇯🇴"
-          },
-          "is_predicted_winner": false
-        },
-        {
-          "name": "Algeria",
-          "side": "away",
-          "prob": 0.538542343864599,
-          "odds": 1.56,
-          "stats": {
-            "flag": "🇩🇿"
+            "flag": "🇧🇷"
           },
           "is_predicted_winner": true
         },
@@ -133,8 +85,8 @@
           "name": "Draw",
           "side": "draw",
           "outcome": "draw",
-          "prob": 0.28433175604989613,
-          "odds": 4.2,
+          "prob": 0.21384316313718685,
+          "odds": 5.55,
           "is_predicted_winner": false
         }
       ],
@@ -142,38 +94,38 @@
       "prop": {
         "label": "Over/Under 2.5",
         "pick": "Under 2.5",
-        "p": 0.4433356040989067,
-        "confidence": 0.5566643959010933
+        "p": 0.4414047899169368,
+        "confidence": 0.5585952100830631
       },
       "venue": "neutral",
-      "fixture_id": "jordan_algeria_3",
-      "kickoff_ts": 1782183600.0,
-      "kickoff": "Tue 03:00Z"
+      "fixture_id": "scotland_brazil_2",
+      "kickoff_ts": 1782338400.0,
+      "kickoff": "Wed 22:00Z"
     },
     {
-      "position": 4,
+      "position": 3,
       "section": "main",
       "predictable": "ok",
-      "predicted_winner": "Norway",
-      "winner_confidence": 0.3747031398314788,
+      "predicted_winner": "Canada",
+      "winner_confidence": 0.42886351150977015,
       "competitors": [
         {
-          "name": "Norway",
+          "name": "Canada",
           "side": "home",
-          "prob": 0.3747031398314788,
-          "odds": 2.25,
+          "prob": 0.42886351150977015,
+          "odds": 3.38,
           "stats": {
-            "flag": "🇳🇴"
+            "flag": "🇨🇦"
           },
           "is_predicted_winner": true
         },
         {
-          "name": "Senegal",
+          "name": "Switzerland",
           "side": "away",
-          "prob": 0.305919453795791,
-          "odds": 3.22,
+          "prob": 0.27563017178348925,
+          "odds": 2.35,
           "stats": {
-            "flag": "🇸🇳"
+            "flag": "🇨🇭"
           },
           "is_predicted_winner": false
         },
@@ -181,25 +133,71 @@
           "name": "Draw",
           "side": "draw",
           "outcome": "draw",
-          "prob": 0.3193774063727302,
-          "odds": 3.55,
+          "prob": 0.2955063167067405,
+          "odds": 3.15,
           "is_predicted_winner": false
         }
       ],
       "category": "FIFA World Cup",
       "prop": {
         "label": "Over/Under 2.5",
-        "pick": "Over 2.5",
-        "p": 0.5367580074396279,
-        "confidence": 0.5367580074396279
+        "pick": "Under 2.5",
+        "p": 0.46354357495028536,
+        "confidence": 0.5364564250497146
+      },
+      "venue": "host",
+      "fixture_id": "canada_switzerland_3"
+    },
+    {
+      "position": 4,
+      "section": "main",
+      "predictable": "ok",
+      "predicted_winner": "Qatar",
+      "winner_confidence": 0.3840598362533091,
+      "competitors": [
+        {
+          "name": "Bosnia and Herzegovina",
+          "side": "home",
+          "prob": 0.324735412883819,
+          "odds": 1.4,
+          "stats": {
+            "flag": "🇧🇦"
+          },
+          "is_predicted_winner": false
+        },
+        {
+          "name": "Qatar",
+          "side": "away",
+          "prob": 0.3840598362533091,
+          "odds": 7.5,
+          "stats": {
+            "flag": "🇶🇦"
+          },
+          "is_predicted_winner": true
+        },
+        {
+          "name": "Draw",
+          "side": "draw",
+          "outcome": "draw",
+          "prob": 0.2912047508628719,
+          "odds": 5.25,
+          "is_predicted_winner": false
+        }
+      ],
+      "category": "FIFA World Cup",
+      "prop": {
+        "label": "Over/Under 2.5",
+        "pick": "Under 2.5",
+        "p": 0.3984474427847917,
+        "confidence": 0.6015525572152083
       },
       "venue": "neutral",
-      "fixture_id": "norway_senegal_4",
-      "kickoff_ts": 1782172800.0,
-      "kickoff": "Tue 00:00Z"
+      "fixture_id": "herzegovina_qatar_4",
+      "kickoff_ts": 1782327600.0,
+      "kickoff": "Wed 19:00Z"
     }
   ],
-  "generated_for": "2026-06-22",
+  "generated_for": "2026-06-24",
   "sport": "soccer",
   "competition": "FIFA World Cup"
 }
